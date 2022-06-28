@@ -36,7 +36,7 @@ exports.register = async (req, res) => {
             status: "customer",
         });
 
-        const token = jwt.sign({ id: user.id }, process.env.TOKEN_KEY);
+        const token = jwt.sign({ id: newUser.id }, process.env.TOKEN_KEY);
 
         res.status(200).send({
             status: "success...",
