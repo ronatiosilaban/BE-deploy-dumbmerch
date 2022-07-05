@@ -176,9 +176,9 @@ exports.getProducts = async (req, res) => {
         });
         data = JSON.parse(JSON.stringify(dataAll))
 
-        data = {
+         data = {
             ...data,
-            image:  process.env.PATH_FILE + data.image
+            image: process.env.PATH_FILE + data.image
 
         }
 
