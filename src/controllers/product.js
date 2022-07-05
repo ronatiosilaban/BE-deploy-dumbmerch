@@ -174,8 +174,6 @@ exports.getProducts = async (req, res) => {
                 exclude: ['createdAt', 'updatedAt', 'idUser'],
             },
         });
-
-        let FILE_PATH = 'http://localhost:5000/uploads/'
         data = JSON.parse(JSON.stringify(dataAll))
 
         data = {
