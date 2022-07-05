@@ -1,8 +1,16 @@
 const { product, user, category, productCategory } = require("../../models");
+const cloudinary = require('../utils/cloudinary');
 
 exports.addProduct = async (req, res) => {
     try {
         let { categoryId } = req.body;
+
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'dumbmerch',
+            use_filename: true,
+            unique_filename: false,
+        });
+
         console.log(req.user);
         if (categoryId) {
             categoryId = categoryId.split(',');
@@ -12,7 +20,7 @@ exports.addProduct = async (req, res) => {
             title: req.body.title,
             desc: req.body.desc,
             price: req.body.price,
-            image: req.file.filename,
+            image: result.public_id,
             qty: req.body.qty,
             idUser: req.user.id,
         };
@@ -112,11 +120,9 @@ exports.getProduct = async (req, res) => {
         data = JSON.parse(JSON.stringify(dataAll))
 
         data = data.map((item) => {
-            return {
-                ...item,
-                image: FILE_PATH + item.image
-            }
-        })
+            return { ...item, image: process.env.PATH_FILE + item.image };
+        });
+
 
         res.send({
             status: "success...",
@@ -269,4 +275,3 @@ exports.deleteProduct = async (req, res) => {
         })
     }
 }
-
