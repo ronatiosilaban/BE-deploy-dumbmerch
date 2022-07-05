@@ -180,7 +180,7 @@ exports.getProducts = async (req, res) => {
 
         data = {
             ...data,
-            image: process.env.PATH_FILE + data.image
+            image:  process.env.PATH_FILE + data.image
 
         }
 
