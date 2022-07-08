@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'https://dumbmerch-ronatio-parhorasan-silaban.netlify.app/'
+        origin: process.env.CLIENT_URL || 3000'
     },
 });
 
