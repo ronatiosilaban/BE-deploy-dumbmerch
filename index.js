@@ -16,7 +16,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.CLIENT_URL // we must define cors because our client and server have diffe
+        origin: 'https://dumbmerch-ronatio-parhorasan-silaban.netlify.app'
     },
 });
 
